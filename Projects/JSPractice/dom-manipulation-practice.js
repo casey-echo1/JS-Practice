@@ -75,5 +75,6 @@ document.getElementById('main-heading').addEventListener('mouseover', function()
 });
 
 document.getElementById("main-heading").addEventListener('mouseout', function () {
-    document.querySelector('.description').innerText.setProperty('This is a simple paragraph of text.');
+    document.querySelector('.description').innerText=('This is a simple paragraph of text.');
 });
+
