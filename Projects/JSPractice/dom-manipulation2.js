@@ -1,18 +1,32 @@
-// Add a new task to the list when the "Add Task" button is clicked.
+// Get reference to the todo list
+const todoList = document.getElementById('todo-list');
 
-// Hint: Use createElement() and appendChild() to add a new li element.
-
-//TODO add functionality to auto increment task number
+// Function to add a new task with auto-incrementing number
 document.getElementById('add-task').addEventListener('click', function() {
+    const taskCount = todoList.children.length + 1;
     const newTask = document.createElement('li');
-    newTask.innerText="Task 3";
-    document.getElementById('todo-list').appendChild(newTask);
+    newTask.innerText = `Task ${taskCount}`;
+    todoList.appendChild(newTask);
 });
 
-// document.getElementById('remove-task').addEventListener('click', function() {
-//     const taskList = document.getElementById('todo-list');
-//     if (taskList.lastElementChild) {
-//         taskList.removeChild(itemList.lastElementChild);
-//     }
-// });
+// Function to remove the last task
+document.getElementById('remove-task').addEventListener('click', function() {
+    if (todoList.lastElementChild) {
+        todoList.removeChild(todoList.lastElementChild);
+    }
+});
+
+// Function to clear the entire list
+document.getElementById('clear-list').addEventListener('click', function() {
+    todoList.innerHTML = '';
+});
+
+// Function to toggle the 'completed' class
+function toggleCompleted(event) {
+    if (event.target.tagName === 'LI') {
+        event.target.classList.toggle('completed');
+    }
+}
+// Add event listener for toggling completed status
+todoList.addEventListener('click', toggleCompleted);
 
